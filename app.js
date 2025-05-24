@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
-const indexRouter = require('./app/routes/index');
+const indexRouter = require('./app_server/routes/index');
 
 const app = express();
 
@@ -10,13 +10,13 @@ app.engine(
   hbs.engine({
     extname: 'hbs',
     defaultLayout: 'main',
-    layoutsDir: 'app/views/layouts/',
+    layoutsDir: 'app_server/views/layouts/',
   })
 );
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'app/views'));
+app.set('views', path.join(__dirname, 'app_server/views'));
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
