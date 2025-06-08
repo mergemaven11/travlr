@@ -41,9 +41,18 @@ npm install
 node run dev
 ```
 
+### API Routes
+
+- http://localhost:3000
+- http://localhost:3000/api/trips
+- http://localhost:3000/api/trips/GALR210214
+
+
 ## 👤 Author
 
 **Tobias Scott**  
 [Portfolio](https://tcs-portfolio.netlify.app/)
 [GitHub](https://github.com/mergemaven11)  
 [LinkedIn](https://www.linkedin.com/in/tobias-scott-he-him-b3572751/)
+
+
