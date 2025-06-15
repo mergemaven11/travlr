@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-handlebars');
-const indexRouter = require('./app_server/routes/index');
 const apiRouter = require('./app_api/routes/index');
 
 const app = express();
@@ -18,12 +17,20 @@ app.engine(
 
   })
 );
+
+// Enable CORS 
+app.use('/api', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Request-Width, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+})
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'app_server/views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/api', apiRouter);
 
 const PORT = process.env.PORT || 3000;

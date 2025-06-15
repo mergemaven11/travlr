@@ -9,9 +9,15 @@ router.get('/', (req, res) => {
 });
 
 // /api/trips
-router.route("/trips").get(tripsController.tripsList);
+router
+  .route("/trips")
+  .get(tripsController.tripsList)
+  .post(tripsController.tripsAddTrip);
 
 // /api/trips/:tripCode
-router.route("/trips/:tripCode").get(tripsController.tripsFindByCode);
+router
+  .route("/trips/:tripCode")
+  .get(tripsController.tripsFindByCode)
+  .put(tripsController.tripsUpdateTrip)
 
 module.exports = router;
